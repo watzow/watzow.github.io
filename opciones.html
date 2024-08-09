@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¡Elige una Opción!</title>
+    <title>Lanza el Dado</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f9f9f9;
+            background-color: #f0f0f0;
             text-align: center;
             padding: 50px;
             margin: 0;
@@ -17,49 +17,47 @@
             color: #ff1493;
             font-size: 2.5em;
         }
-        .option {
-            display: inline-block;
-            width: 200px;
+        #dice {
+            width: 100px;
             height: 100px;
-            line-height: 100px;
-            margin: 20px;
             background-color: #ff1493;
             color: #fff;
-            font-size: 1.5em;
+            line-height: 100px;
+            font-size: 3em;
             border-radius: 10px;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
+            transition: transform 0.2s;
+            display: inline-block;
         }
-        .option:hover {
-            background-color: #e6007e;
-        }
-        .option.move {
-            position: absolute;
-            transition: transform 0.3s;
-        }
-        .option.move:hover {
-            transform: translate(20px, 20px);
+        #dice:hover {
+            transform: scale(1.1);
         }
     </style>
 </head>
 <body>
-    <h1>Elige una Opción:</h1>
-    <div id="option1" class="option move">Opción 1</div>
-    <div id="option2" class="option move">Opción 2</div>
+    <h1>Lanza el Dado de 20 Caras</h1>
+    <div id="dice">🎲</div>
+    <p id="result" style="font-size: 2em; margin-top: 20px;"></p>
 
     <script>
-        // Función para manejar el clic en las opciones
-        function handleOptionClick(optionId) {
-            alert(`¡Has seleccionado ${optionId}!`);
-        }
+        document.getElementById('dice').addEventListener('click', function() {
+            // Lanza el dado
+            const roll = weightedDiceRoll();
+            
+            // Muestra el resultado
+            document.getElementById('result').textContent = `Resultado: ${roll}`;
+            
+            // Redirige si sale 12 o 8
+            if (roll === 12 || roll === 8) {
+                window.location.href = 'premio.html'; // Cambia 'premio.html' a la página de tu elección
+            }
+        });
 
-        // Asigna eventos de clic a las opciones
-        document.getElementById('option1').addEventListener('click', function() {
-            handleOptionClick('Opción 1');
-        });
-        document.getElementById('option2').addEventListener('click', function() {
-            handleOptionClick('Opción 2');
-        });
-    </script>
-</body>
-</html>
+        // Función para simular el lanzamiento del dado trucado
+        function weightedDiceRoll() {
+            // Define las probabilidades
+            const weightedFaces = [8, 8, 8, 8, 8, 8, 8, 8, 12, 12, 12, 12, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20]; 
+            // Elige un número al azar
+            const randomIndex = Math.floor(Math.random() * weightedFaces.length);
+            return weightedFaces[randomIndex];
+  
