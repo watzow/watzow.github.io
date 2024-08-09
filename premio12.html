@@ -42,12 +42,11 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 5em;
-            color: #ffcc00;
-            pointer-events: none; /* Asegura que el clic en el icono también active la imagen */
-        }
-        #playIcon::before {
-            content: '▶'; /* Triángulo de reproducción */
+            width: 50px; /* Tamaño del icono */
+            height: 50px;
+            background: url('play-icon.png') no-repeat center center;
+            background-size: contain;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -59,7 +58,7 @@
 
     <div id="prizeContainer">
         <img id="prizeImage" src="winning-image.jpg" alt="Premio" onclick="playSound()" />
-        <div id="playIcon"></div>
+        <div id="playIcon" onclick="playSound()"></div>
     </div>
 
     <audio id="prizeSound" src="congratulations.mp3" preload="auto"></audio>
@@ -71,7 +70,7 @@
             document.getElementById('hint').style.display = 'none'; // Ocultar pista
         }
 
-        // Reproduce el sonido cuando se hace clic en la imagen
+        // Reproduce el sonido cuando se hace clic en la imagen o en el icono
         function playSound() {
             var sound = document.getElementById('prizeSound');
             sound.play();
@@ -82,3 +81,4 @@
     </script>
 </body>
 </html>
+
