@@ -32,12 +32,12 @@
         #prizeImage:hover {
             transform: scale(1.05);
         }
-        #arrow {
+        #finger {
             position: absolute;
-            top: 10px; /* Ajusta según el tamaño de la flecha y la imagen */
+            bottom: -80px; /* Ajusta la posición según el tamaño del icono y la imagen */
             left: 50%;
             transform: translateX(-50%);
-            font-size: 4em; /* Tamaño grande para destacar */
+            font-size: 5em; /* Tamaño grande para destacar */
             color: #ffcc00;
             animation: trollAnimation 2s infinite;
             pointer-events: none;
@@ -47,13 +47,13 @@
                 transform: translateX(-50%) translateY(0) rotate(0deg) scale(1);
             }
             25% {
-                transform: translateX(-50%) translateY(-20px) rotate(10deg) scale(1.2);
+                transform: translateX(-50%) translateY(-20px) rotate(-10deg) scale(1.2);
             }
             50% {
-                transform: translateX(-50%) translateY(0) rotate(-10deg) scale(1);
+                transform: translateX(-50%) translateY(0) rotate(10deg) scale(1);
             }
             75% {
-                transform: translateX(-50%) translateY(20px) rotate(10deg) scale(1.2);
+                transform: translateX(-50%) translateY(20px) rotate(-10deg) scale(1.2);
             }
             100% {
                 transform: translateX(-50%) translateY(0) rotate(0deg) scale(1);
@@ -64,21 +64,22 @@
 <body>
     <h1>¡Felicidades! Has Ganado el Premio 8</h1>
     <div id="prizeContainer">
-        <div id="arrow">⬇️</div>
-        <img id="prizeImage" src="premio8_1.jpg" alt="Premio" onclick="changeImage()" />
+        <img id="prizeImage" src="image1.jpg" alt="Premio" onclick="changeImage()" />
+        <div id="finger">👆</div>
     </div>
 
     <script>
         // Cambia la imagen cuando se hace clic
         function changeImage() {
             var image = document.getElementById('prizeImage');
-            if (image.src.endsWith('premio8_1.jpg')) {
-                image.src = 'premio8_2.jpg'; // URL de la segunda imagen
-                document.getElementById('arrow').style.display = 'none'; // Oculta la flecha después del primer clic
+            if (image.src.endsWith('image1.jpg')) {
+                image.src = 'image2.jpg'; // URL de la segunda imagen
+                document.getElementById('finger').style.display = 'none'; // Oculta el dedo después del primer clic
             } else {
-                image.src = 'premio8_1.jpg'; // URL de la primera imagen
+                image.src = 'image1.jpg'; // URL de la primera imagen
             }
         }
     </script>
 </body>
 </html>
+
