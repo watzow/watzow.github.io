@@ -34,6 +34,12 @@
         .anniversary-image {
             margin-top: 20px;
         }
+        #playSound {
+            cursor: pointer;
+            font-size: 2em;
+            color: #ff1493;
+            display: none; /* Ocultar si no es necesario */
+        }
     </style>
 </head>
 <body>
@@ -45,12 +51,11 @@
     </div>
     
     <audio id="anniversarySound" src="cancion1.mp3" preload="auto" autoplay></audio>
-     <!-- Flecha para avanzar -->
+    <!-- Flecha para avanzar -->
     <a id="nextPage" href="opciones.html">➡️</a>
 
     <script>
-        // La reproducción automática del audio puede ser bloqueada por el navegador
-        // Este script asegura que el audio se intente reproducir
+        // Intenta reproducir el audio cuando la página esté completamente cargada
         document.addEventListener('DOMContentLoaded', function() {
             var audio = document.getElementById('anniversarySound');
             audio.play().catch(function(error) {
