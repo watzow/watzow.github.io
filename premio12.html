@@ -25,6 +25,22 @@
             padding: 20px;
             border-radius: 10px;
         }
+        #clickableCup {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-top: 30px;
+            position: relative;
+        }
+        #cupIcon {
+            font-size: 80px; /* Tamaño del emoticono */
+        }
+        #clickMessage {
+            font-size: 1.5em;
+            color: #ffcc00;
+            margin-left: 15px;
+        }
         #prizeContainer {
             display: none; /* Inicialmente oculto */
             position: relative;
@@ -36,24 +52,6 @@
             height: auto;
             border-radius: 10px;
             cursor: pointer;
-            position: relative;
-        }
-        #clickableCup {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            margin-top: 30px;
-            position: relative;
-        }
-        #cupIcon {
-            width: 80px;
-            height: auto;
-        }
-        #clickMessage {
-            font-size: 1.5em;
-            color: #ffcc00;
-            margin-left: 15px;
         }
     </style>
 </head>
@@ -64,12 +62,12 @@
     </div>
 
     <div id="clickableCup" onclick="showPrize()">
-        <img id="cupIcon" src="trophy-icon.png" alt="Copa">
-        <div id="clickMessage">¡Haz clic en la copa para revelar el premio!</div>
+        <div id="cupIcon">🏆</div>
+        <div id="clickMessage">¡Haz clic en el trofeo para revelar el premio!</div>
     </div>
 
     <div id="prizeContainer">
-        <img id="prizeImage" src="winning-image.jpg" alt="Premio" />
+        <img id="prizeImage" src="premio12.jpg" alt="Premio" />
     </div>
 
     <audio id="prizeSound" src="congratulations.mp3" preload="auto"></audio>
@@ -93,3 +91,4 @@
     </script>
 </body>
 </html>
+
