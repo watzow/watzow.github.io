@@ -61,4 +61,11 @@
         // Función para simular el lanzamiento del dado trucado
         function weightedDiceRoll() {
             // Define las probabilidades
-            const weightedFaces = [8, 8, 8, 8, 8, 8, 8, 8, 12, 12, 12,
+            const weightedFaces = [8, 8, 8, 8, 8, 8, 8, 8, 12, 12, 12, 12, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20];
+            // Elige un número al azar
+            const randomIndex = Math.floor(Math.random() * weightedFaces.length);
+            return weightedFaces[randomIndex];
+        }
+    </script>
+</body>
+</html>
