@@ -42,37 +42,7 @@
         <p>Un año más juntos, y cada día te quiero más.</p>
         <p>Gracias por estar a mi lado y por todo lo que hemos compartido. ¡Que sigamos celebrando muchos más!</p>
         <p>💖🎉</p>
-     </div>
-    <div id="player"></div>
-    <script>
-        var tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-        var player;
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('player', {
-                height: '0',
-                width: '0',
-                videoId: '0Uhh62MUEic?', // Reemplaza con el ID de tu video
-                playerVars: {
-                    'autoplay': 1,
-                    'mute': 1,
-                    'playsinline': 1,
-                    'controls': 0,
-                    'showinfo': 0,
-                    'rel': 0
-                },
-                events: {
-                    'onReady': onPlayerReady
-                }
-            });
-        }
-
-        function onPlayerReady(event) {
-            event.target.playVideo();
-        }
-    </script>
+    </div>
+    <iframe src="https://www.youtube.com/embed/0Uhh62MUEic??autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </body>
 </html>
