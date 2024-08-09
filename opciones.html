@@ -3,32 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lanza el Dado</title>
+    <title>Juego RPG - Opciones</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f0f0f0;
+            background: url('rpg-background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
             text-align: center;
             padding: 50px;
             margin: 0;
-            color: #333;
         }
         h1 {
-            color: #ff1493;
-            font-size: 2.5em;
+            font-size: 3em;
+            color: #ffcc00;
         }
         #dice {
             width: 100px;
             height: 100px;
-            background-color: #ff1493;
-            color: #fff;
+            background-color: #ffcc00;
+            color: #000;
             line-height: 100px;
             font-size: 3em;
             border-radius: 10px;
             cursor: pointer;
             transition: transform 0.2s;
             display: inline-block;
-            user-select: none; /* Evita la selección del texto al hacer clic */
+            user-select: none;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
         }
         #dice:hover {
             transform: scale(1.1);
@@ -37,35 +39,88 @@
             font-size: 2em;
             margin-top: 20px;
         }
+        #status {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
-    <h1>Lanza el Dado de 20 Caras</h1>
+    <h1>¡Lanza el Dado de Aventura!</h1>
     <div id="dice">🎲</div>
     <p id="result"></p>
+    <p id="status"></p>
 
     <script>
+        let attempts = 10;
+        let prizes = 2; // 2 premios
+        let diceFaces = [];
+        let prizeIndexes = []; // Para recordar dónde colocamos los premios
+
+        // Prepara el dado asegurando que los premios aparezcan una sola vez
+        function prepareDiceFaces() {
+            // Inicializa el dado con números no premiados
+            diceFaces = Array(10).fill(null).map(() => weightedDiceRoll());
+
+            // Selecciona aleatoriamente dos posiciones para los premios
+            let prizePositions = [];
+            while (prizePositions.length < 2) {
+                let pos = Math.floor(Math.random() * 10);
+                if (!prizePositions.includes(pos)) {
+                    prizePositions.push(pos);
+                }
+            }
+
+            // Coloca el premio en las posiciones seleccionadas
+            diceFaces[prizePositions[0]] = 8;
+            diceFaces[prizePositions[1]] = 12;
+
+            // Actualiza los índices de premios
+            prizeIndexes = prizePositions;
+        }
+
+        prepareDiceFaces();
+
         document.getElementById('dice').addEventListener('click', function() {
-            // Lanza el dado
-            const roll = weightedDiceRoll();
-            
-            // Muestra el resultado
-            document.getElementById('result').textContent = `Resultado: ${roll}`;
-            
-            // Redirige si sale 12 o 8
-            if (roll === 12 || roll === 8) {
-                window.location.href = 'premio.html'; // Cambia 'premio.html' a la página de tu elección
+            if (attempts > 0) {
+                // Lanza el dado
+                const roll = diceFaces[10 - attempts];
+                
+                // Muestra el resultado
+                let resultText = `Resultado: ${roll}`;
+                if (roll === 12 || roll === 8) {
+                    resultText += ' ¡Felicidades! Has ganado un premio!';
+                } else {
+                    resultText += ' Oh no, has perdido.';
+                }
+                
+                document.getElementById('result').textContent = resultText;
+                attempts--;
+                
+                // Actualiza el estado del juego
+                updateStatus();
+                
+                // Redirige si ya no hay intentos
+                if (attempts === 0) {
+                    setTimeout(() => {
+                        window.location.href = 'fin.html'; // Cambia 'fin.html' a la página de fin de juego o resultados
+                    }, 2000); // Tiempo de espera antes de redirigir
+                }
             }
         });
 
+        // Función para actualizar el estado del juego
+        function updateStatus() {
+            document.getElementById('status').textContent = `Intentos restantes: ${attempts} | Premios restantes: ${prizes - prizeIndexes.length}`;
+        }
+
         // Función para simular el lanzamiento del dado trucado
         function weightedDiceRoll() {
-            // Define las probabilidades
-            const weightedFaces = [8, 8, 8, 8, 8, 8, 8, 8, 12, 12, 12, 12, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20];
-            // Elige un número al azar
+            const weightedFaces = [1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20];
             const randomIndex = Math.floor(Math.random() * weightedFaces.length);
             return weightedFaces[randomIndex];
         }
     </script>
 </body>
 </html>
+
