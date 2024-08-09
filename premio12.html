@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premio 12</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('rpg-background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #ffcc00;
+        }
+        #hint {
+            font-size: 1.5em;
+            margin: 20px 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        #prizeContainer {
+            display: none; /* Inicialmente oculto */
+            position: relative;
+            text-align: center;
+            margin-top: 30px;
+        }
+        #prizeImage {
+            width: 300px;
+            height: auto;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        #playIcon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 5em;
+            color: #ffcc00;
+            pointer-events: none; /* Asegura que el clic en el icono también active la imagen */
+        }
+        #playIcon::before {
+            content: '▶'; /* Triángulo de reproducción */
+        }
+    </style>
+</head>
+<body>
+    <h1>¡Has Ganado el Premio 12!</h1>
+    <div id="hint">
+        *Con sustancias para reanudar los sueños perdidos, y en una celda de cristal, si la rompes, te herirás. En días recientes, mis lágrimas han cesado, y el dolor interno desgarra mi ser. Mis entrañas se esparcen por el suelo, y sufro en mi interior sin cesar.*
+    </div>
+
+    <div id="prizeContainer">
+        <img id="prizeImage" src="winning-image.jpg" alt="Premio" onclick="playSound()" />
+        <div id="playIcon"></div>
+    </div>
+
+    <audio id="prizeSound" src="congratulations.mp3" preload="auto"></audio>
+
+    <script>
+        // Mostrar la imagen y el sonido cuando se adivine correctamente
+        function showPrize() {
+            document.getElementById('prizeContainer').style.display = 'block';
+            document.getElementById('hint').style.display = 'none'; // Ocultar pista
+        }
+
+        // Reproduce el sonido cuando se hace clic en la imagen
+        function playSound() {
+            var sound = document.getElementById('prizeSound');
+            sound.play();
+        }
+
+        // Llama a esta función cuando el usuario adivine correctamente
+        // Puedes invocar showPrize() desde tu lógica de adivinanza
+    </script>
+</body>
+</html>
