@@ -38,24 +38,22 @@
             cursor: pointer;
             position: relative;
         }
-        #playIcon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80px;
-            height: 80px;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 50%;
+        #clickableCup {
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #fff;
-            font-size: 3em;
             cursor: pointer;
+            margin-top: 30px;
+            position: relative;
         }
-        #playIcon::before {
-            content: '▶'; /* Triángulo de reproducción */
+        #cupIcon {
+            width: 80px;
+            height: auto;
+        }
+        #clickMessage {
+            font-size: 1.5em;
+            color: #ffcc00;
+            margin-left: 15px;
         }
     </style>
 </head>
@@ -65,9 +63,13 @@
         *Con sustancias para reanudar los sueños perdidos, y en una celda de cristal, si la rompes, te herirás. En días recientes, mis lágrimas han cesado, y el dolor interno desgarra mi ser. Mis entrañas se esparcen por el suelo, y sufro en mi interior sin cesar.*
     </div>
 
+    <div id="clickableCup" onclick="showPrize()">
+        <img id="cupIcon" src="trophy-icon.png" alt="Copa">
+        <div id="clickMessage">¡Haz clic en la copa para revelar el premio!</div>
+    </div>
+
     <div id="prizeContainer">
-        <img id="prizeImage" src="premio12.jpg" alt="Premio" onclick="playSound()" />
-        <div id="playIcon" onclick="playSound()"></div>
+        <img id="prizeImage" src="winning-image.jpg" alt="Premio" />
     </div>
 
     <audio id="prizeSound" src="congratulations.mp3" preload="auto"></audio>
@@ -76,10 +78,11 @@
         // Mostrar la imagen y el sonido cuando se adivine correctamente
         function showPrize() {
             document.getElementById('prizeContainer').style.display = 'block';
-            document.getElementById('hint').style.display = 'none'; // Ocultar pista
+            document.getElementById('clickableCup').style.display = 'none'; // Ocultar copa
+            playSound();
         }
 
-        // Reproduce el sonido cuando se hace clic en la imagen o en el icono
+        // Reproduce el sonido
         function playSound() {
             var sound = document.getElementById('prizeSound');
             sound.play();
