@@ -28,16 +28,21 @@
             cursor: pointer;
             transition: transform 0.2s;
             display: inline-block;
+            user-select: none; /* Evita la selección del texto al hacer clic */
         }
         #dice:hover {
             transform: scale(1.1);
+        }
+        #result {
+            font-size: 2em;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <h1>Lanza el Dado de 20 Caras</h1>
     <div id="dice">🎲</div>
-    <p id="result" style="font-size: 2em; margin-top: 20px;"></p>
+    <p id="result"></p>
 
     <script>
         document.getElementById('dice').addEventListener('click', function() {
@@ -56,8 +61,4 @@
         // Función para simular el lanzamiento del dado trucado
         function weightedDiceRoll() {
             // Define las probabilidades
-            const weightedFaces = [8, 8, 8, 8, 8, 8, 8, 8, 12, 12, 12, 12, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20]; 
-            // Elige un número al azar
-            const randomIndex = Math.floor(Math.random() * weightedFaces.length);
-            return weightedFaces[randomIndex];
-  
+            const weightedFaces = [8, 8, 8, 8, 8, 8, 8, 8, 12, 12, 12,
