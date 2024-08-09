@@ -36,17 +36,26 @@
             height: auto;
             border-radius: 10px;
             cursor: pointer;
+            position: relative;
         }
         #playIcon {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 50px; /* Tamaño del icono */
-            height: 50px;
-            background: url('play-icon.png') no-repeat center center;
-            background-size: contain;
+            width: 80px;
+            height: 80px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 3em;
             cursor: pointer;
+        }
+        #playIcon::before {
+            content: '▶'; /* Triángulo de reproducción */
         }
     </style>
 </head>
@@ -81,4 +90,3 @@
     </script>
 </body>
 </html>
-
