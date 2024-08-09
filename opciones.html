@@ -58,11 +58,12 @@
 
     <script>
         let attempts = 10;
-        let prizes = 2; // 2 premios
+        let totalPrizes = 2; // Total de premios disponibles
+        let remainingPrizes = totalPrizes; // Premios restantes
         let diceFaces = [];
         let prizeIndexes = []; // Para recordar dónde colocamos los premios
 
-        // Prepara el dado asegurando que los premios aparezcan una sola vez
+        // Prepara el dado asegurando que los premios aparezcan en lanzamientos tardíos
         function prepareDiceFaces() {
             // Inicializa el dado con números no premiados
             diceFaces = Array(10).fill(null).map(() => weightedDiceRoll());
@@ -75,6 +76,9 @@
                     prizePositions.push(pos);
                 }
             }
+
+            // Asegura que los premios no estén en los primeros lanzamientos
+            prizePositions = prizePositions.filter(pos => pos >= 6); // Premios en posiciones a partir del lanzamiento 6
 
             // Coloca el premio en las posiciones seleccionadas
             diceFaces[prizePositions[0]] = 8;
@@ -95,6 +99,9 @@
                 let resultText = `Resultado: ${roll}`;
                 if (roll === 12 || roll === 8) {
                     resultText += ' ¡Felicidades! Has ganado un premio!';
+                    remainingPrizes--;
+                    // Redirige a la página de premio
+                    window.location.href = roll === 12 ? 'premio12.html' : 'premio8.html';
                 } else {
                     resultText += ' Oh no, has perdido.';
                 }
@@ -116,7 +123,7 @@
 
         // Función para actualizar el estado del juego
         function updateStatus() {
-            document.getElementById('status').textContent = `Intentos restantes: ${attempts} | Premios restantes: ${prizes - (2 - prizeIndexes.length)}`;
+            document.getElementById('status').textContent = `Intentos restantes: ${attempts} | Premios restantes: ${remainingPrizes}`;
         }
 
         // Función para simular el lanzamiento del dado trucado
@@ -131,3 +138,4 @@
     </script>
 </body>
 </html>
+
