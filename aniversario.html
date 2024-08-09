@@ -31,14 +31,12 @@
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
-        .anniversary-image {
+        #nextPage {
+            display: block;
             margin-top: 20px;
-        }
-        #playSound {
-            cursor: pointer;
-            font-size: 2em;
+            font-size: 3em;
             color: #ff1493;
-            display: none; /* Ocultar si no es necesario */
+            text-decoration: none;
         }
     </style>
 </head>
@@ -55,7 +53,8 @@
     <a id="nextPage" href="opciones.html">➡️</a>
 
     <script>
-        // Intenta reproducir el audio cuando la página esté completamente cargada
+        // La reproducción automática del audio puede ser bloqueada por el navegador
+        // Este script asegura que el audio se intente reproducir
         document.addEventListener('DOMContentLoaded', function() {
             var audio = document.getElementById('anniversarySound');
             audio.play().catch(function(error) {
