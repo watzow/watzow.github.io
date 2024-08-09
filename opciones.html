@@ -18,10 +18,6 @@
             font-size: 3em;
             color: #ffcc00;
         }
-        #instructions {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-        }
         #dice {
             width: 100px;
             height: 100px;
@@ -47,11 +43,15 @@
             font-size: 1.5em;
             margin-top: 20px;
         }
+        #instructions {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
-    <h1>¡Lanza el dado!</h1>
-    <p id="instructions">Cuidado, solo tienes 10 intentos y 2 premios.</p>
+    <h1>¡Lanza el Dado de Aventura!</h1>
+    <p id="instructions">¡Cuidado! Solo tienes 10 intentos y 2 premios escondidos en el dado.</p>
     <div id="dice">🎲</div>
     <p id="result"></p>
     <p id="status"></p>
@@ -61,13 +61,6 @@
         let prizes = 2; // 2 premios
         let diceFaces = [];
         let prizeIndexes = []; // Para recordar dónde colocamos los premios
-        const lossMessages = [
-            "¡No puede ser! Parece que Knekro está en modo troll hoy. ¡Sigue intentándolo!",
-            "¡Ups! Knekro dice: '¡La suerte no siempre está de tu lado, pero la diversión sí!'",
-            "¡Oh no! Knekro se ríe de tu intento fallido. ¡Mejora tu puntería para la próxima!",
-            "¡Qué mal! Knekro grita: '¡Vas a necesitar más que suerte para ganar esta vez!'",
-            "¡La suerte te ha fallado! Knekro te recuerda: '¡No es el fin, sigue jugando!'"
-        ];
 
         // Prepara el dado asegurando que los premios aparezcan una sola vez
         function prepareDiceFaces() {
@@ -104,7 +97,6 @@
                     resultText += ' ¡Felicidades! Has ganado un premio!';
                 } else {
                     resultText += ' Oh no, has perdido.';
-                    resultText += ` ${getRandomLossMessage()}`;
                 }
                 
                 document.getElementById('result').textContent = resultText;
@@ -127,12 +119,6 @@
             document.getElementById('status').textContent = `Intentos restantes: ${attempts} | Premios restantes: ${prizes - prizeIndexes.length}`;
         }
 
-        // Función para obtener un mensaje de pérdida aleatorio de Knekro
-        function getRandomLossMessage() {
-            const randomIndex = Math.floor(Math.random() * lossMessages.length);
-            return lossMessages[randomIndex];
-        }
-
         // Función para simular el lanzamiento del dado trucado
         function weightedDiceRoll() {
             const weightedFaces = [1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20];
@@ -142,3 +128,4 @@
     </script>
 </body>
 </html>
+
