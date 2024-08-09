@@ -63,7 +63,7 @@
         let diceFaces = [];
         let prizeIndexes = []; // Para recordar dónde colocamos los premios
 
-        // Prepara el dado asegurando que los premios aparezcan en lanzamientos tardíos
+        // Prepara el dado asegurando que los premios aparezcan una sola vez
         function prepareDiceFaces() {
             // Inicializa el dado con números no premiados
             diceFaces = Array(10).fill(null).map(() => weightedDiceRoll());
@@ -76,9 +76,6 @@
                     prizePositions.push(pos);
                 }
             }
-
-            // Asegura que los premios no estén en los primeros lanzamientos
-            prizePositions = prizePositions.filter(pos => pos >= 6); // Premios en posiciones a partir del lanzamiento 6
 
             // Coloca el premio en las posiciones seleccionadas
             diceFaces[prizePositions[0]] = 8;
@@ -138,4 +135,3 @@
     </script>
 </body>
 </html>
-
