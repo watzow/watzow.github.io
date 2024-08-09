@@ -64,7 +64,7 @@
 <body>
     <h1>¡Felicidades! Has Ganado el Premio 8</h1>
     <div id="prizeContainer">
-        <img id="prizeImage" src="image1.jpg" alt="Premio" onclick="changeImage()" />
+        <img id="prizeImage" src="premio8_1.jpg" alt="Premio" onclick="changeImage()" />
         <div id="finger">👆</div>
     </div>
 
@@ -72,11 +72,11 @@
         // Cambia la imagen cuando se hace clic
         function changeImage() {
             var image = document.getElementById('prizeImage');
-            if (image.src.endsWith('image1.jpg')) {
-                image.src = 'image2.jpg'; // URL de la segunda imagen
+            if (image.src.endsWith('premio8_1.jpg')) {
+                image.src = 'premio8_2.jpg'; // URL de la segunda imagen
                 document.getElementById('finger').style.display = 'none'; // Oculta el dedo después del primer clic
             } else {
-                image.src = 'image1.jpg'; // URL de la primera imagen
+                image.src = 'premio8_1.jpg'; // URL de la primera imagen
             }
         }
     </script>
