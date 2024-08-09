@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Elige una Opción!</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+            color: #333;
+        }
+        h1 {
+            color: #ff1493;
+            font-size: 2.5em;
+        }
+        .option {
+            display: inline-block;
+            width: 200px;
+            height: 100px;
+            line-height: 100px;
+            margin: 20px;
+            background-color: #ff1493;
+            color: #fff;
+            font-size: 1.5em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .option:hover {
+            background-color: #e6007e;
+        }
+        .option.move {
+            position: absolute;
+            transition: transform 0.3s;
+        }
+        .option.move:hover {
+            transform: translate(20px, 20px);
+        }
+    </style>
+</head>
+<body>
+    <h1>Elige una Opción:</h1>
+    <div id="option1" class="option move">Opción 1</div>
+    <div id="option2" class="option move">Opción 2</div>
+
+    <script>
+        // Función para manejar el clic en las opciones
+        function handleOptionClick(optionId) {
+            alert(`¡Has seleccionado ${optionId}!`);
+        }
+
+        // Asigna eventos de clic a las opciones
+        document.getElementById('option1').addEventListener('click', function() {
+            handleOptionClick('Opción 1');
+        });
+        document.getElementById('option2').addEventListener('click', function() {
+            handleOptionClick('Opción 2');
+        });
+    </script>
+</body>
+</html>
