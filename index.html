@@ -3,37 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¡Feliz Cumpleaños!</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f0e68c;
-            text-align: center;
-            padding: 50px;
-        }
-        h1 {
-            color: #ff6347;
-            font-size: 3em;
-        }
-        p {
-            color: #2e8b57;
-            font-size: 1.5em;
-        }
-        .birthday-message {
-            margin-top: 50px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-        .birthday-image {
-            margin-top: 20px;
-        }
-    </style><!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acceso Restringido</title>
     <style>
         body {
@@ -42,12 +11,17 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f0e68c;
+            background-color: #f8c8dc;
+            background-image: url('https://i.imgur.com/E8RZyTD.jpg'), url('https://i.imgur.com/7uRbDsf.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
             margin: 0;
+            padding: 20px;
         }
         .password-container {
             text-align: center;
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -63,13 +37,13 @@
             padding: 10px 20px;
             font-size: 16px;
             color: #fff;
-            background-color: #ff6347;
+            background-color: #ff69b4;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
         button:hover {
-            background-color: #ff4500;
+            background-color: #ff1493;
         }
     </style>
 </head>
@@ -83,10 +57,10 @@
     <script>
         function checkPassword() {
             const password = document.getElementById('password').value;
-            const correctPassword = 'deuideu'; 
+            const correctPassword = 'deuideu'; // Cambia esto por la contraseña que quieras
 
             if (password === correctPassword) {
-                window.location.href = 'aniversario.html'; 
+                window.location.href = 'aniversario.html'; // Cambia 'aniversario.html' por el nombre de tu página de felicitación
             } else {
                 alert('Contraseña incorrecta. Inténtalo de nuevo.');
             }
